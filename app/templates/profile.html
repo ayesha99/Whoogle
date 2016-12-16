@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav ul a {
+    text-decoration: none;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<p style="text-align: left;"><img src="https://farm6.staticflickr.com/5756/30395640214_1287bf641c_b.jpg" alt="" width="107" height="48" /></p>
+<p>{% if profile %}</p>
+<h1>{{ profile['name'] }}'s Twitter Profile</h1>
+
+</header>
+  
+<nav>
+  <ul>
+    <li><img style="float: left;" src={{profile['profile_image_url']}} alt="" width="80" height="80" border="4"/></li>
+  </ul>
+</nav>
+
+<article>
+
+  <p>About: {{ profile['description'] }}</p>
+  <p>Followers: {{ profile['followers_count'] }}</p>
+  <p>Location: {{ profile['location'] }}</p>
+<!--<p>{{ profile }}</p>-->
+  <p>{% endif %}</p>
+</article>
+
+
+<div align="center">
+<table border="3">
+<tbody>
+<tr><th width="200">Topic</th><th width="200">Emotion</th><th width="200">Score</th></tr>
+{% if usersentiment %}
+<!-- <p> {{ usersentiment }} </p> -->
+{% for emotion in usersentiment %}
+  <tr>
+  <td>{{ emotion['text'] }}</td>
+  <td>{{ emotion['emotion']['type'] }}</td>
+  <td>{{ emotion['emotion']['value'] }}</td>
+  </tr>
+  {% endfor %}
+{% endif %}
+</tbody>
+</table>
+<p><a href='/map/{{ profile["screen_name"] }}'>{{ profile["name"] }}'s Follower Relationship Map</a></p>
+<p><a href='http://www.twitter.com/{{ h }}'>Go to {{ h }}'s Twitter Page</a></p>
+<p><a href='/search'>Start a new Search</a></p>
+</div>
+
+</div>
+</html>

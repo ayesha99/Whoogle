@@ -1,0 +1,11 @@
+<html>
+<p><img src="https://farm6.staticflickr.com/5756/30395640214_1287bf641c_b.jpg" alt="" width="107" height="48" /></p>
+{% if handle %}
+<h2 style="text-align: center;"><strong>{{handle}}'s Follower Relationship Map</strong></h2>
+{% if map %}
+<h2 style="text-align: center;"><img src='data:image/png;base64, {{map}}'/></li></h2>
+{% endif %}
+<p><a href='/profile/{{handle}}'>Back to {{handle}}'s profile</a></p>
+<p><a href='/search'>Start a new Search</a></p>
+{% endif %}
+

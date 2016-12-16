@@ -1,0 +1,21 @@
+<html>
+<p><img src="https://farm6.staticflickr.com/5756/30395640214_1287bf641c_b.jpg" alt="" width="107" height="48" /></p>
+<h2 style="text-align: center;"><strong>Search Results</strong></h2>
+<div align="center">
+<table border="1">
+<tbody>
+<tr><th width="200">Name</th><th width="200">Handle</th><th width="200">Photo</th></tr>
+{% if search %}
+{% for user in search %}
+<tr>
+<td style="text-align: center;"><a href='/profile/{{user['screen_name']}}'>{{ user['name'] }}</td>
+<td><center><span style="text-decoration: underline; color: #3366ff;">@{{ user['screen_name'] }}</span><center></center></center></td>
+<td><br /><img style="display: block; margin-left: auto; margin-right: auto;" src={{user['profile_image_url']}} alt="" width="67" height="67" /></td>
+</tr>
+{% endfor %}
+{% endif %}
+</tbody>
+</table>
+</div>
+<a href='/search'>Search</a>
+</html>
